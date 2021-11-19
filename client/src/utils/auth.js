@@ -1,21 +1,21 @@
-// use this to decode a token and get the user's information out of it
+// We use this to decode a token, then we recevce the user's information out of 'jwt-decode', this is so cool.
 import decode from 'jwt-decode';
 
-// create a new class to instantiate for a user
+// this is the point where we create a new class to instantiate for the user, and it is working. 
 class AuthService {
-  // get user data
+  // this is helpfule to know right here, get user data
   getProfile() {
     return decode(this.getToken());
   }
 
-  // check if user's logged in
+  // check if user is logged in, yeappp (works).
   loggedIn() {
-    // Checks if there is a saved token and it's still valid
+    // Checks if there is a saved token and it's still valid, it is and recheked (i think).
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token); // handwaiving here
+    return !!token && !this.isTokenExpired(token); 
   }
 
-  // check if token is expired
+  // check if token is expired but It is not 11.7.21. 
   isTokenExpired(token) {
     try {
       const decoded = decode(token);
