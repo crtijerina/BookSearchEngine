@@ -1,4 +1,4 @@
-// see SignupForm.js for comments
+// remeber this is part where SignupForm.js is establishing comments, i think.
 
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
@@ -48,7 +48,6 @@ const LoginForm = () => {
       console.error(e);
     }
 
-    // clear form values
     setUserFormData({
       email: '',
       password: '',
