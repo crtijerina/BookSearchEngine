@@ -17,5 +17,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.3.0"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.4.9",
+    "exit-hook": "^3.0.0"
   }
 }
