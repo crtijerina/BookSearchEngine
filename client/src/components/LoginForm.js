@@ -63,7 +63,7 @@ const LoginForm = () => {
           show={showAlert}
           variant="danger"
         >
-          Something went wrong with your login credentials!
+          Oh no!!! Something about your login credentials went wrong!
         </Alert>
         <Form.Group>
           <Form.Label htmlFor="email">Email</Form.Label>
@@ -76,7 +76,7 @@ const LoginForm = () => {
             required
           />
           <Form.Control.Feedback type="invalid">
-            Email is required!
+            Oh rats! Maybe I forgot to say, your Email is required.
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -99,7 +99,7 @@ const LoginForm = () => {
           type="submit"
           variant="success"
         >
-          Submit
+          Submit and rock on!
         </Button>
       </Form>
     </>
