@@ -41,7 +41,7 @@ const SearchBooks = () => {
       );
 
       if (!response.ok) {
-        throw new Error("something went wrong!");
+        throw new Error("Ooppps something went wrong!");
       }
 
       const { items } = await response.json();
@@ -84,7 +84,7 @@ const SearchBooks = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Search Some Books!</h1>
+          <h1> Let the Book Search Begin!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
@@ -94,12 +94,12 @@ const SearchBooks = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
                   size="lg"
-                  placeholder="Search for a book"
+                  placeholder="Type title of Book"
                 />
               </Col>
               <Col xs={12} md={4}>
                 <Button type="submit" variant="success" size="lg">
-                  Submit Search
+                  Book it!
                 </Button>
               </Col>
             </Form.Row>
@@ -110,8 +110,8 @@ const SearchBooks = () => {
       <Container>
         <h2>
           {searchedBooks.length
-            ? `Viewing ${searchedBooks.length} results:`
-            : "Search for a book to begin"}
+            ? `Ok, looks like there are ${searchedBooks.length} results:`
+            : "Book it! Begin your adventure! "}
         </h2>
         <CardColumns>
           {searchedBooks.map((book) => {
@@ -138,7 +138,7 @@ const SearchBooks = () => {
                     >
                       {savedBookIds?.some((savedId) => savedId === book.bookId)
                         ? "Book Already Saved!"
-                        : "Save This Book!"}
+                        : "Save This!"}
                     </Button>
                   )}
                 </Card.Body>

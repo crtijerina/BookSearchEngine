@@ -34,7 +34,7 @@ const SavedBooks = () => {
         variables: { bookId },
       });
 
-      //I need to remeber to remove book's id from local storage, I think  this will be a good point to stop.
+      // I need to remeber to remove book's id from local storage, I think  this will be a good point to stop.
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
@@ -42,7 +42,7 @@ const SavedBooks = () => {
   };
 
   if (loading) {
-    return <h2>LOADING...</h2>;
+    return <h2>LOADING BOOK DATA...</h2>;
   }
 
   return (

@@ -10,7 +10,7 @@ class AuthService {
 
   // check if user is logged in, yeappp (works).
   loggedIn() {
-    // Checks if there is a saved token and it's still valid, it is and recheked (i think).
+    // Yes finished Checks if there is a saved token and it's still valid, (i think).
     const token = this.getToken();
     return !!token && !this.isTokenExpired(token); 
   }
@@ -28,20 +28,20 @@ class AuthService {
   }
 
   getToken() {
-    // Retrieves the user token from localStorage
+    // this code right here; retrieves the user token from localStorage
     return localStorage.getItem('id_token');
   }
 
   login(idToken) {
-    // Saves user token to localStorage
+    // Then this code will saves user token to yes the "localStorage"
     localStorage.setItem('id_token', idToken);
     window.location.assign('/');
   }
 
   logout() {
-    // Clear user token and profile data from localStorage
+    // at this point the code should; clear user token and profile data from localStorage
     localStorage.removeItem('id_token');
-    // this will reload the page and reset the state of the application
+    // Remebering this will reload the page and reset the state of the application
     window.location.assign('/');
   }
 }

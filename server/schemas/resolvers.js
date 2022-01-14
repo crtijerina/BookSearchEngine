@@ -26,13 +26,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError('Incorrect credentials, looks Email related');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError('Incorrect Password');
       }
 
       const token = signToken(user);
@@ -49,7 +49,7 @@ const resolvers = {
         return updatedUser;
       }
 
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('Yo, You need to be logged in!');
     },
     removeBook: async (parent, { bookId }, context) => {
       if (context.user) {
