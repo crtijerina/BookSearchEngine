@@ -1,9 +1,11 @@
-Book-Search GitHub license
+BookSearchEngine GitHub license
+
+
 Title
-Book-Search
+BookSearchEngine12 (Quoolfly™: Books on Books Island Search)
 
 Description
-This is an app that allows you to search for any book you like and save them later for when you wish to purchase them from any book store or online venture.
+This is an app that allows you to search for any book you like and save them later for when you wish to purchase them from any book store or online venture. Still working out the kinks, this was a super fun project that I enjoyed the trial and error prossess of learning, oh the joy.
 
 Table-of-Contents
 
