@@ -3,6 +3,7 @@
 BookSearchEngine12 (Quoolfly™: Books on Books Island Search)
 
 **Description**
+
 This is an app that allows you to search for any book you like and save them later for when you wish to purchase them from any book store or online venture because we get our Books from the source of all information of a mistical Island of Books, Still working out the kinks. This in all seriousness was a super fun project that I enjoyed the trial and error prossess of learning and hope you have fun and enjoy the user experiance of this book searching app. 
 
 **Table-of-Contents**
@@ -17,8 +18,8 @@ This is an app that allows you to search for any book you like and save them lat
 **Installation**
 
 Click the code box in the upper left hand corner and clone it to your own repository. Once you open it up in the editor of your choice make sure to "NPM INSTALL" to install the npm modules used for this code. Also make sure that you CD SERVER and CD CLIENT and NPM INSTALL as well.
-**
-Here is a screenshot of the application:**
+
+**Here is a screenshot of the application:**
 
 ![Screen Shot](https://user-images.githubusercontent.com/83429667/149606870-da3bd890-8856-4202-b390-43fa1753a0ac.png)
 
