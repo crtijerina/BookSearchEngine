@@ -6,12 +6,16 @@ Description
 This is an app that allows you to search for any book you like and save them later for when you wish to purchase them from any book store or online venture.
 
 Table-of-Contents
+
+- Installation
+- Usage
+- Contributing
+- License
+- Questions
+
+
 Installation
-Usage
-Contributing
-License
-Questions
-Installation
+
 Click the code box in the upper left hand corner and clone it to your own repository. Once you open it up in the editor of your choice make sure to "NPM INSTALL" to install the npm modules used for this code. Also make sure that you CD SERVER and CD CLIENT and NPM INSTALL as well.
 
 Here is a screenshot of the application:
@@ -20,12 +24,15 @@ Here is a screenshot of the application:
 
 
 Usage
+
 To use this app simply go to: https://booksearchengine12-app.herokuapp.com/
 
 Contributing
+
 Thank you for your interest in helping out; if you wish to help out. Simply send me an email.
 
 License
+
 This project is licensed under the MIT license.
 
 Questions
