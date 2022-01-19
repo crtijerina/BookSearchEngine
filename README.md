@@ -4,7 +4,7 @@ BookSearchEngine12 (Quoolfly™: Books on Books Island Search)
 
 **Description**
 
-This is an app that allows you to search for any book you like and save them later for when you wish to purchase them from any book store or online venture because we get our Books from the source of all information of a mistical Island of Books. Still working out the kinks, however this was a fun project that I enjoyed the trial and error prossess of learning and hope you have fun and enjoy the user experiance of this book searching app. 
+This is an app that allows you to search for any book you like and save them later for when you wish to purchase them from any book store or online venture because we get our Books from the source of all information of a mistical Island of Books. Still working out the kinks, however this was a fun project that I enjoyed the trial and error prossess of learning and hope you have fun and enjoy the user experiance of this book searching app (Quoolfly is not a real trade mark and holds no leagal claim).
 
 **Table-of-Contents**
 
