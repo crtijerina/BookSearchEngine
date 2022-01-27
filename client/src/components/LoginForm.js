@@ -1,10 +1,8 @@
-// remebering this is part where SignupForm.js is establishing comments.
-
-import { useMutation } from '@apollo/client';
+import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
-import React, { useState, useEffect } from 'react';
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
@@ -20,7 +18,6 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has compair to the react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -28,11 +25,11 @@ const LoginForm = () => {
     }
 
     try {
-      const {data} = await loginUser({
-        variables: {...userFormData}
+      const { data } = await loginUser({
+        variables: { ...userFormData }
       });
-
       Auth.login(data.login.token);
+      
     } catch (err) {
       console.error(err);
       setShowAlert(true);
