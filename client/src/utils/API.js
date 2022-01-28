@@ -9,13 +9,24 @@ export const getMe = (token) => {
 
 export const createUser = (userData) => {
     return fetch('/api/users', {
-      method: 'POST',
+      method: 'POST'
 
-export const loginUser = 
+export const loginUser = (userData) => {
+    return fetch('/api/users/login', {
+      method: 'POST'
 
-export const saveBook = (bookData, token)
+export const saveBook = (bookData, token) => {
+    return fetch('/api/users', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
 
-export const deleteBook = (bookId, token)
+export const deleteBook = (bookId, token)=>  {
+    return fetch(`/api/users/books/${bookId}` {
+      method: 'DELETE'
 
 
-export const searchGoogleBooks = (query)
+export const searchGoogleBooks = (query) => {
+    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+};
