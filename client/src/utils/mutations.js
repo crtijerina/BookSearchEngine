@@ -10,7 +10,7 @@ export let LOGIN_USER = gql`
       }
     }
   }
-`
+`;
 
 export let ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
@@ -22,7 +22,7 @@ export let ADD_USER = gql`
       }
     }
   }
-`
+`;
 
 export let SAVE_BOOK = gql`
   mutation saveBook($content: BookInfo! ) {
@@ -40,7 +40,7 @@ export let SAVE_BOOK = gql`
       }
     }
   }
-`
+`;
 
 export let REMOVE_BOOK = gql`
   mutation removeBook($bookId: ID!) {
