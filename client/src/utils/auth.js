@@ -1,24 +1,18 @@
-// We use this to decode a token, then we recevce the user's information out of 'jwt-decode', this is so cool.
 import decode from 'jwt-decode';
 
-// this is the point where we create a new class to instantiate for the user, and it is working. 
 class AuthService {
-  // this is helpfule to know right here, get user data
   getProfile() {
     return decode(this.getToken());
   }
 
-  // check if user is logged in, yeappp (works).
   loggedIn() {
-    // Yes finished Checks if there is a saved token and it's still valid, (i think).
-    const token = this.getToken();
+    let token = this.getToken();
     return !!token && !this.isTokenExpired(token); 
   }
 
-  // check if token is expired but It is not 11.7.21. 
   isTokenExpired(token) {
     try {
-      const decoded = decode(token);
+      let decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {
         return true;
       } else return false;
@@ -28,20 +22,16 @@ class AuthService {
   }
 
   getToken() {
-    // this code right here; retrieves the user token from localStorage
     return localStorage.getItem('id_token');
   }
 
   login(idToken) {
-    // Then this code will saves user token to yes the "localStorage"
     localStorage.setItem('id_token', idToken);
     window.location.assign('/');
   }
 
   logout() {
-    // at this point the code should; clear user token and profile data from localStorage
     localStorage.removeItem('id_token');
-    // Remebering this will reload the page and reset the state of the application
     window.location.assign('/');
   }
 }
