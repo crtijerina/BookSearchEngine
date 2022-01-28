@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from "react";
-import {
-  Jumbotron,
-  Container,
-  Col,
-  Form,
-  Button,
-  Card,
-  CardColumns,
-} from "react-bootstrap";
-
+import { Jumbotron, Container, Col, Form, Button, Card, CardColumns} from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { SAVE_BOOK } from "../utils/mutations";
+import Auth from "../utils/auth";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 
-import Auth from "../utils/auth";
+
 
 const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
-
-  const [searchInput, setSearchInput] = useState("");
-
+  const [searchInput, setSearchInput] = useState('');
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-
-  const [saveBook, { error }] = useMutation(SAVE_BOOK);
+  const [bookSaved] = useMutation(SAVE_BOOK);
 
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
@@ -36,12 +25,10 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
-      );
+      const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {
-        throw new Error("Ooppps something went wrong!");
+        throw new Error("Oh no! Something is off like error!");
       }
 
       const { items } = await response.json();
@@ -55,7 +42,7 @@ const SearchBooks = () => {
       }));
 
       setSearchedBooks(bookData);
-      setSearchInput("");
+      setSearchInput('');
     } catch (err) {
       console.error(err);
     }
@@ -71,10 +58,10 @@ const SearchBooks = () => {
     }
 
     try {
-      const { data } = await saveBook({
-        variables: { bookData: { ...bookToSave } },
+      await bookSaved({
+        variables: { content: bookToSave }
       });
-      console.log(savedBookIds);
+      
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
       console.error(err);
@@ -84,7 +71,7 @@ const SearchBooks = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1> Let the Book Search Begin!</h1>
+          <h1> Let Book Search Begin!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
@@ -94,7 +81,7 @@ const SearchBooks = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type="text"
                   size="lg"
-                  placeholder="Type title of Book"
+                  placeholder="Type title of Book, we got this!"
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -110,19 +97,15 @@ const SearchBooks = () => {
       <Container>
         <h2>
           {searchedBooks.length
-            ? `Ok, looks like there are ${searchedBooks.length} results:`
-            : "Book it! Begin your adventure! "}
+            ? `Looks as if  ${searchedBooks.length}are  in inventory:`
+            : 'Book it! Begin the adventure!'}
         </h2>
         <CardColumns>
           {searchedBooks.map((book) => {
             return (
               <Card key={book.bookId} border="dark">
                 {book.image ? (
-                  <Card.Img
-                    src={book.image}
-                    alt={`The cover for ${book.title}`}
-                    variant="top"
-                  />
+                  <Card.Img src={book.image} alt={`Cover for ${book.title}`} variant="top"/>
                 ) : null}
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
@@ -130,15 +113,12 @@ const SearchBooks = () => {
                   <Card.Text>{book.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedBookIds?.some(
-                        (savedId) => savedId === book.bookId
-                      )}
+                      disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
                       className="btn-block btn-info"
-                      onClick={() => handleSaveBook(book.bookId)}
-                    >
-                      {savedBookIds?.some((savedId) => savedId === book.bookId)
-                        ? "Book Already Saved!"
-                        : "Save This!"}
+                      onClick={() => handleSaveBook(book.bookId)}>
+                      {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
+                        ? "Sssaved boyyy!"
+                        : "Save This, maybe."}
                     </Button>
                   )}
                 </Card.Body>
