@@ -4,7 +4,7 @@ Please visit the deployed application by clicking the following link: [**BSE**](
 BookSearchEngine-1 (Quoolfly™: Books on Books Island Search)
 
 
-Click the code box in the upper left hand corner and clone it to your own repository. Once you open it up in the editor of your choice make sure to "NPM INSTALL" to install the npm modules used for this code. Also make sure that you CD SERVER and CD CLIENT and NPM INSTALL as well.
+Click the code box in the upper left hand corner and clone it to your own repository. Once you open it up in the editor of your choice make sure to "NPM INSTALL" to install the npm modules used for this code. Also make sure that you CD Server and CD Client and NPM INSTALL as well.
 
 ### Application
 

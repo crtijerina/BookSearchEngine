@@ -22,7 +22,7 @@ export const getMe = (token) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`;
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(userData),
     });
@@ -33,7 +33,7 @@ export const getMe = (token) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`;
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(bookData),
     });
@@ -43,7 +43,7 @@ export const getMe = (token) => {
     return fetch(`/api/users/books/${bookId}`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${token}`;
+        authorization: `Bearer ${token}`,
       },
     });
   };
