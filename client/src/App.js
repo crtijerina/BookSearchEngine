@@ -1,29 +1,18 @@
 import React from 'react';
+import { ApolloProvider, InMemoryCache, createHttpLink, ApolloClient} from '@apollo/client';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
+import SearchBooks from './pages/SearchBooks';
 import Navbar from './components/Navbar';
 
-// this Construct to this main GraphQL API endpoint was a pain.
-const httpLink = createHttpLink({
+let httpLink = createHttpLink({
   uri: '/graphql',
 });
 
-// this is a must to remeber 
-//Construct request middleware that will attach the 
-//JWT token to every request as an `authorization` header
-const authLink = setContext((_, { headers }) => {
+let authLink = setContext((_, { headers }) => {
   
-  const token = localStorage.getItem('id_token');
-  
+  let token = localStorage.getItem('id_token');
   return {
     headers: {
       ...headers,
@@ -32,7 +21,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const client = new ApolloClient({
+let client = new ApolloClient({
   
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
