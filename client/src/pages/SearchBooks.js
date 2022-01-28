@@ -117,8 +117,8 @@ const SearchBooks = () => {
                       className="btn-block btn-info"
                       onClick={() => handleSaveBook(book.bookId)}>
                       {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
-                        ? "Sssaved boyyy!"
-                        : "Save This, maybe."}
+                        ? "Book Sssaved!"
+                        : "Save This, maybe?"}
                     </Button>
                   )}
                 </Card.Body>

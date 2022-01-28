@@ -1,15 +1,16 @@
-import { AuthenticationError } from 'apollo-server-express';
-import { User } from '../models';
-import { signToken } from '../utils/auth';
+let { User } = require('../models');
+let { AuthenticationError } = require('apollo-server-express');
+let { signToken } = require('../utils/auth');
 
 let resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      if (context.user) {
-        let userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
+        if (context.user) {
+            const userData = await User.findOne({ _id: context.user._id })
+                .select('-__v -password')
 
-        return userData;
-      }
+            return userData;
+        }
 
       throw new AuthenticationError('this is the Not logged in error');
     },
@@ -21,7 +22,7 @@ let resolvers = {
       let user = await User.create(args);
       let token = signToken(user);
 
-      return { token, user };
+      return { token, user }
     },
 
     login: async (parent, { email, password }) => {
@@ -40,6 +41,7 @@ let resolvers = {
       let token = signToken(user);
       return { token, user };
     },
+
     saveBook: async (parent, { content }, { user }) => {
       if (user) {
         let updatedUser = await User.findByIdAndUpdate(
@@ -51,22 +53,22 @@ let resolvers = {
         return updatedUser;
       }
 
-      throw new AuthenticationError('Yo, don!');
+      throw new AuthenticationError('Yo, you need to be logged in!');
     },
-    removeBook: async (parent, { bookId }, context) => {
+    removeBook: async (parents, { bookId }, { user }) => {
       if (user) {
-        let modifiedUser = await User.findOneAndUpdate(
-          { _id: user._id },
-          { $pull: { savedBooks: { bookId: bookId } } },
-          { new: true, runValidations: true  }
-        );
+          let modifiedUser = await User.findOneAndUpdate(
+              { _id: user._id },
+              { $pull: { savedBooks: { bookId: bookId } } },
+              { new: true, runValidators: true }
+          );
 
         return modifiedUser;
       }
 
-      throw new AuthenticationError('Not logged in, You need to be!');
+      throw new AuthenticationError('Not logged in but you need to be, Error.');
     },
   },
 };
 
-export default resolvers;
+module.exports = resolvers

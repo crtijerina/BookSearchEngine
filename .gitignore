@@ -1,4 +1,5 @@
-node_modules
+.vscode/
+node_modules/
+ignoring/
 .env
-.DS_Store
-.eslint-disable-next-line
+SKIP_PREFLIGHT_CHECK=true
