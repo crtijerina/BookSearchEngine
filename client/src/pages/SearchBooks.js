@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Jumbotron, Container, Col, Form, Button, Card, CardColumns} from "react-bootstrap";
-import { useMutation } from "@apollo/client";
-import { SAVE_BOOK } from "../utils/mutations";
-import Auth from "../utils/auth";
-import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
+import React, { useState, useEffect } from 'react';
+import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { useMutation } from '@apollo/client';
+
+import { SAVE_BOOK } from '../utils/mutations';
+import Auth from '../utils/auth';
+import { searchGoogleBooks } from '../utils/API';
+import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 
 
@@ -71,17 +73,17 @@ const SearchBooks = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1> Let Book Search Begin!</h1>
+          <h1> Book Search Begins!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
                 <Form.Control
-                  name="searchInput"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type="text"
-                  size="lg"
-                  placeholder="Type title of Book, we got this!"
+                  name = "searchInput"
+                  value = {searchInput}
+                  onChange = {(e) => setSearchInput(e.target.value)}
+                  type = "text"
+                  size = "lg"
+                  placeholder= "Let's go!"
                 />
               </Col>
               <Col xs={12} md={4}>

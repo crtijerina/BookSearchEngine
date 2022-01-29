@@ -1,69 +1,69 @@
-let { User } = require('../models');
-let { AuthenticationError } = require('apollo-server-express');
-let { signToken } = require('../utils/auth');
+const { User } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
 
-let resolvers = {
-  Query: {
-    me: async (parent, args, context) => {
-        if (context.user) {
-            const userData = await User.findOne({ _id: context.user._id })
-                .select('-__v -password')
+const resolvers = {
+    Query: {
+        me: async (parent, args, context) => {
+            if (context.user) {
+                const userData = await User.findOne({ _id: context.user._id })
+                    .select('-__v -password')
 
-            return userData;
+                return userData;
+            }
+
+            throw new AuthenticationError('Not logged in')
         }
-
-      throw new AuthenticationError('this is the Not logged in error');
-    },
   },
 
   Mutation: {
     addUser: async (parent, args) => {
       
-      let user = await User.create(args);
-      let token = signToken(user);
+      const user = await User.create(args);
+      const token = signToken(user)
 
-      return { token, user }
+      return { user, token }
     },
 
     login: async (parent, { email, password }) => {
       
-      let user = await User.findOne({ email });
-      if (!user) {
-        throw new AuthenticationError('Email not found. Maybe try one more time?');
+      const user = await User.findOne({ email });
+            if (!user) {
+                throw new AuthenticationError('Email not found. Maybe try one more time?');
       }
 
-      let correctPw = await user.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError('That is not the password. Take a breath, try again.');
       }
 
-      let token = signToken(user);
-      return { token, user };
+      const token = signToken(user);
+      return { token, user }
     },
 
     saveBook: async (parent, { content }, { user }) => {
       if (user) {
-        let updatedUser = await User.findByIdAndUpdate(
-          { _id: user._id },
-          { $addToSet: { savedBooks: content } },
-          { new: true, runValidations: true }
-        );
+          const updatedUser = await User.findByIdAndUpdate(
+              { _id: user._id },
+              { $addToSet: { savedBooks: content } },
+              { new: true, runValidators: true }
+          );
 
-        return updatedUser;
+          return updatedUser;
       }
 
-      throw new AuthenticationError('Yo, you need to be logged in!');
+      throw new AuthenticationError('Yo, you need to be logged in!')
     },
     removeBook: async (parents, { bookId }, { user }) => {
       if (user) {
-          let modifiedUser = await User.findOneAndUpdate(
+          const modifiedUser = await User.findOneAndUpdate(
               { _id: user._id },
               { $pull: { savedBooks: { bookId: bookId } } },
               { new: true, runValidators: true }
           );
 
-        return modifiedUser;
+          return modifiedUser;
       }
 
       throw new AuthenticationError('Not logged in but you need to be, Error.');
