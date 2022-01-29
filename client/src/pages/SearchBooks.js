@@ -100,7 +100,7 @@ const SearchBooks = () => {
         <h2>
           {searchedBooks.length
             ? `Looks as if  ${searchedBooks.length}are  in inventory:`
-            : 'Book it! Begin the adventure!'}
+            : 'Books Begin The Adventure!'}
         </h2>
         <CardColumns>
           {searchedBooks.map((book) => {
